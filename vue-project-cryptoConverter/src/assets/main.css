@@ -1,0 +1,16 @@
+@import './base.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Frijole&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bahianita&family=Bungee+Inline&family=Bungee+Shade&family=Codystar:wght@300;400&family=DotGothic16&family=Ewert&family=Faster+One&family=Ledger&family=Nabla&family=Odibee+Sans&family=Protest+Guerrilla&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Saira+Stencil+One&family=Vina+Sans&family=Wallpoet&family=Zen+Tokyo+Zoo&family=Zilla+Slab+Highlight:wght@400;700&display=swap');
+
+#app {
+  /*max-width: 1280px;*/
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+body {
+  display: block;
+  min-height: 100vh;
+}
