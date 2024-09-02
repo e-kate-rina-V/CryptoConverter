@@ -4,7 +4,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bahianita&family=Bungee+Inline&family=Bungee+Shade&family=Codystar:wght@300;400&family=DotGothic16&family=Ewert&family=Faster+One&family=Ledger&family=Nabla&family=Odibee+Sans&family=Protest+Guerrilla&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Saira+Stencil+One&family=Vina+Sans&family=Wallpoet&family=Zen+Tokyo+Zoo&family=Zilla+Slab+Highlight:wght@400;700&display=swap');
 
 #app {
-  /*max-width: 1280px;*/
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;
@@ -13,4 +12,465 @@
 body {
   display: block;
   min-height: 100vh;
+}
+
+/*Converter*/
+
+.dropdown {
+  position: relative;
+  margin-top: 60%;
+  margin-left: 500%;
+  font-family: 'Quantico', cursive;
+}
+
+.dropdown-button {
+  background-color: rgb(26, 23, 23);
+  color: #fff;
+  padding: 20px;
+  border: 3px solid #000;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 200px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  font-family: 'Quantico', cursive;
+}
+
+.dropdown-button:hover {
+  background: rgb(32, 32, 32);
+}
+
+.dropdown-container {
+  position: absolute;
+  width: 200px;
+  background: rgb(26, 23, 23);
+  border: 3px solid #000;
+  border-radius: 3px;
+  z-index: 1000;
+  top: 100%;
+  left: 0;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-bottom: 2px solid #333;
+  background: rgb(26, 23, 23);
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.dropdown-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 8px;
+}
+
+.dropdown-menu li {
+  display: block;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover,
+.dropdown-menu li.active {
+  background: rgb(41, 36, 36);
+}
+
+.no-results {
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.pagination-controls button {
+  background: rgb(26, 23, 23);
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.pagination-controls button:disabled {
+  background: rgb(41, 36, 36);
+  cursor: not-allowed;
+}
+
+/*Home*/
+
+.header-p {
+  position: relative;
+  font-family: 'Bungee Shade', cursive;
+  font-size: 50px;
+  color: black;
+}
+
+#welcome {
+  padding-top: 25%;
+  padding-left: 30%;
+}
+
+#to {
+  padding-left: 70%;
+}
+
+#crypto {
+  padding-left: 70%;
+  font-size: 85px;
+}
+
+#converter {
+  padding-left: 105%;
+  font-size: 85px;
+}
+
+/*Input*/
+
+#crypto-input {
+  outline: none;
+  width: 500px;
+  border-radius: 3px;
+  border: 0;
+  background: black;
+  padding: 8px 10px;
+  font-size: 1.2em;
+  margin-top: 20%;
+  margin-left: 35%;
+  color: white;
+  opacity: .8;
+}
+
+#convert-btn {
+  margin-top: 3%;
+  padding: 15px 20px;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: black;
+  opacity: .8;
+  border: 0;
+  border-radius: 3px;
+  margin-left: 47%;
+  font-family: 'Quantico', cursive;
+}
+
+#convert-btn:hover {
+  background: rgb(32, 32, 32);
+  transform: scale(1.1);
+}
+
+/*Login, Register*/
+
+.login-form,
+.register-form {
+  display: block;
+  position: fixed;
+  width: 400px;
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  left: 38%;
+  top: 32%;
+  background-color: black;
+  color: white;
+  opacity: .9;
+  z-index: 2;
+  font-family: 'Quantico', cursive;
+}
+
+h2 {
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+#google-img {
+  width: 25px;
+}
+
+.form-group {
+  margin-bottom: 1em;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+input {
+  border: 1px solid #ccc;
+  padding: 0.5em;
+  width: 100%;
+  border-radius: 4px;
+}
+
+button {
+  padding: 0.7em;
+  border: 1px solid white;
+  border-radius: 3px;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 1em;
+  background-color: black;
+  font-size: 18px;
+}
+
+.log-in-btn,
+.sign-in-btn {
+  display: grid;
+  text-align: center;
+}
+
+button:hover {
+  transform: scale(0.9);
+}
+
+.error-message {
+  color: red;
+  margin-top: 1em;
+}
+
+.success-message {
+  color: green;
+  margin-top: 1em;
+}
+
+
+/*App.vue*/
+
+header {
+  min-width: 100%;
+  min-height: 20%;
+  position: fixed;
+  display: flex;
+  align-items: start;
+}
+
+main {
+  min-width: 100%;
+}
+
+#footer {
+  width: 101%;
+  height: 100px;
+  position: absolute;
+  top: 100%;
+  left: -1%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solig rgba(255, 255, 255, 0.18);
+
+}
+
+#crypto-img {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 20px;
+  left: 15%;
+}
+
+.auth-buttons button {
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: 'Quantico', cursive;
+}
+
+#sign-in-btn,
+#log-in-btn {
+  border: 2px solid white;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+}
+
+#sign-in-btn:hover,
+#log-in-btn:hover {
+  opacity: .7;
+  text-decoration: underline;
+}
+
+.auth {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  gap: 10px;
+}
+
+.user-info {
+  font-family: 'Quantico', cursive;
+  text-align: center;
+}
+
+.blue-theme .user-info {
+  color: black;
+}
+
+.rectangle-header {
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 100px;
+  left: 30%;
+}
+
+.rectangle-header button {
+  background: none;
+  border: none;
+  font-family: 'Quantico', cursive;
+  border-radius: 5%;
+}
+
+.rectangle-header button:hover {
+  transform: scale(1.1);
+}
+
+#rectangle-1,
+#rectangle-2 {
+  position: relative;
+  width: 260px;
+  height: 75px;
+  color: black;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#rectangle-1::before,
+#rectangle-2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+/**/
+.results {
+  display: flex;
+  margin-top: 3%;
+  margin-left: 4%;
+  gap: 86px;
+  font-family: 'Wallpoet', cursive;
+  font-size: 35px;
+  color: black;
+}
+
+#binance-img {
+  width: 70px;
+}
+
+img {
+  width: 50px;
+  margin-left: 5%;
+}
+
+.crypto-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  display: block;
+}
+
+#close-btn {
+  position: absolute;
+  right: 10%;
+  top: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/*App.vue*/
+.switch-theme {
+  position: fixed;
+  margin-top: 1%;
+  margin-left: 90%;
+}
+
+.switch {
+  position: absolute;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+  background: linear-gradient(54deg, rgba(68, 58, 218, 1) 0%, rgba(150, 140, 40, 1) 100%);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked+.slider {
+  background: linear-gradient(56deg, rgba(138, 150, 58, 1) 0%, rgba(105, 43, 73, 1) 100%);
+}
+
+input:checked+.slider:before {
+  transform: translateX(26px);
+}
+
+.violet-theme {
+  background: rgb(138, 150, 58);
+  background: linear-gradient(56deg, rgba(138, 150, 58, 1) 0%, rgba(105, 43, 73, 1) 100%);
+}
+
+.blue-theme {
+  background: rgb(68, 58, 218);
+  background: linear-gradient(54deg, rgba(68, 58, 218, 1) 0%, rgba(150, 140, 40, 1) 100%);
 }

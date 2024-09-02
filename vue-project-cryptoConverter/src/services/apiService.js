@@ -43,8 +43,8 @@ export async function getTopCryptosFromBinance() {
     try {
         const response = await axios.get(API_URLS.binanceMarkets);
         const symbols = response.data.symbols
-            .filter(symbol => symbol.quoteAsset === 'USDT') 
-            .map(symbol => symbol.symbol.replace('USDT', '')); 
+            .filter(symbol => symbol.quoteAsset === 'USDT')
+            .map(symbol => symbol.symbol.replace('USDT', ''));
 
         return symbols;
     } catch (error) {

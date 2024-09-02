@@ -1,5 +1,6 @@
 <template>
   <div class="register-form">
+    <button id="close-btn" @click="closeWindow">x</button>
     <h2>Sign In</h2>
     <form @submit.prevent="register">
       <div class="form-group">
@@ -22,133 +23,73 @@
   </div>
 </template>
 
+
 <script>
+import { ref } from 'vue';
 import { auth } from '@/firebase';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Cookies from 'js-cookie';
 
 export default {
   name: 'Register',
-  data() {
-    return {
-      email: '',
-      password: '',
-      errorMessage: '',
-      successMessage: ''
-    };
-  },
-  methods: {
-    async register() {
+  setup(props, { emit }) {
+    const email = ref('');
+    const password = ref('');
+    const errorMessage = ref('');
+    const successMessage = ref('');
+
+    const register = async () => {
       try {
-        const userCredential = await createUserWithEmailAndPassword(auth, this.email, this.password);
+        const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
         const user = userCredential.user;
-        this.successMessage = 'Registration successful! Welcome, ' + user.email;
-        this.email = '';
-        this.password = '';
-        this.errorMessage = '';
+        successMessage.value = 'Registration successful! Welcome, ' + user.email;
+        email.value = '';
+        password.value = '';
+        errorMessage.value = '';
         Cookies.set('userEmail', user.email);
-        this.$emit('user-logged-in', user);
+        emit('user-logged-in', user);
       } catch (error) {
         if (error.code === 'auth/email-already-in-use') {
-          this.errorMessage = 'Пользователь с таким email уже существует. Попробуйте войти или используйте другой email.';
+          errorMessage.value = 'Пользователь с таким email уже существует. Попробуйте войти или используйте другой email.';
         } else if (error.code === 'auth/invalid-email') {
-          this.errorMessage = 'Неверный формат email. Проверьте введённый email.';
+          errorMessage.value = 'Неверный формат email. Проверьте введённый email.';
         } else if (error.code === 'auth/weak-password') {
-          this.errorMessage = 'Пароль слишком простой. Используйте более сложный пароль. Минимум шесть символов';
+          errorMessage.value = 'Пароль слишком простой. Используйте более сложный пароль. Минимум шесть символов';
         } else {
-          this.errorMessage = 'Не удалось зарегистрироваться. Попробуйте снова.';
+          errorMessage.value = 'Не удалось зарегистрироваться. Попробуйте снова.';
         }
       }
-    },
-    async signInWithGoogle() {
+    };
+
+    const signInWithGoogle = async () => {
       try {
         const provider = new GoogleAuthProvider();
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
-        this.successMessage = 'Successfully logged in with Google!';
-        this.email = '';
-        this.password = '';
-        this.errorMessage = '';
+        successMessage.value = 'Successfully logged in with Google!';
+        email.value = '';
+        password.value = '';
+        errorMessage.value = '';
         Cookies.set('userEmail', user.email);
-        this.$emit('user-logged-in', user);
+        emit('user-logged-in', user);
       } catch (error) {
-        this.errorMessage = 'Не удалось войти с помощью Google. Попробуйте снова.';
+        errorMessage.value = 'Не удалось войти с помощью Google. Попробуйте снова.';
       }
-    }
+    };
+
+    const closeWindow = () => {
+      emit('close');
+    };
+
+    return {
+      email,
+      password,
+      errorMessage,
+      successMessage,
+      register,
+      signInWithGoogle,
+      closeWindow
+    };
   }
 };
 </script>
-
-<style scoped>
-.register-form {
-  display: block;
-  position: fixed;
-  width: 400px;
-  padding: 1em;
-  background: #f9f9f9;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  left: 38%;
-  top: 32%;
-  background-color: black;
-  color: white;
-  opacity: .9;
-  z-index: 2;
-  font-family: 'Quantico', cursive;
-}
-
-h2 {
-  margin-bottom: 1em;
-  text-align: center;
-}
-
-#google-img {
-  width: 25px;
-}
-
-.form-group {
-  margin-bottom: 1em;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.5em;
-  font-weight: bold;
-}
-
-input {
-  border: 1px solid #ccc;
-  padding: 0.5em;
-  width: 100%;
-  border-radius: 4px;
-}
-
-button {
-  padding: 0.7em;
-  border: 1px solid white;
-  border-radius: 3px;
-  color: white;
-  font-size: 1em;
-  cursor: pointer;
-  background-color: black;
-}
-
-.sign-in-btn {
-  display: grid;
-  text-align: center;
-}
-
-button:hover {
-  transform: scale(0.9);
-}
-
-.error-message {
-  color: red;
-  margin-top: 1em;
-}
-
-.success-message {
-  color: green;
-  margin-top: 1em;
-}
-</style>
