@@ -4,16 +4,20 @@ import Home from './components/Home.vue';
 
 const routes = [
   {
-    path: '/converter',
-    name: 'Converter',
-    component: Converter,
-    meta: { title: 'CryptoSelector' },
+    path: '/',
+    redirect: '/home',
   },
+
   {
     path: '/home',
     name: 'Home',
     component: Home,
-    meta: { title: 'Home' },
+  },
+
+  {
+    path: '/converter',
+    name: 'Converter',
+    component: Converter
   }
 ];
 

@@ -15,7 +15,6 @@ body {
 }
 
 /*Converter*/
-
 .dropdown {
   position: relative;
   margin-top: 60%;
@@ -36,7 +35,6 @@ body {
   justify-content: space-between;
   align-items: center;
   font-size: 15px;
-  font-family: 'Quantico', cursive;
 }
 
 .dropdown-button:hover {
@@ -109,6 +107,60 @@ body {
 .pagination-controls button:disabled {
   background: rgb(41, 36, 36);
   cursor: not-allowed;
+}
+
+.favorite-button {
+  font-size: 12px;
+  padding: 4px 8px;
+  margin-left: 10%;
+  cursor: pointer;
+  color: white;
+
+}
+
+.favorite-button:hover {
+  opacity: 0.8;
+}
+
+.favorites-container {
+  position: absolute;
+  width: 200px;
+  background: rgb(26, 23, 23);
+  border: 3px solid white;
+  border-radius: 3px;
+  z-index: 1000;
+  top: 100%;
+  left: 0;
+}
+
+.favorites-dropdown {
+  position: absolute;
+  margin-left: 65%;
+  bottom: 1%;
+}
+
+.favorites-dropdown .dropdown-container {
+  background: rgb(26, 23, 23);
+  border: 3px solid #000;
+  color: #fff;
+}
+
+.favorites-dropdown .dropdown-menu {
+  background: rgb(26, 23, 23);
+  color: #fff;
+}
+
+.favorites-dropdown .dropdown-menu li {
+  color: #fff;
+}
+
+.favorite-select-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
 }
 
 /*Home*/
@@ -263,12 +315,12 @@ header {
 }
 
 main {
-  min-width: 100%;
+  max-width: 100%;
 }
 
 #footer {
   width: 101%;
-  height: 100px;
+  height: 120px;
   position: absolute;
   top: 100%;
   left: -1%;
@@ -360,7 +412,6 @@ main {
   z-index: 1;
   font-size: 20px;
   cursor: pointer;
-  text-decoration: none;
 }
 
 #rectangle-1::before,
@@ -374,15 +425,39 @@ main {
   z-index: -1;
 }
 
-/**/
+.router {
+  text-decoration: none;
+}
+
+/*results*/
 .results {
   display: flex;
   margin-top: 3%;
   margin-left: 4%;
+  max-width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
   gap: 86px;
   font-family: 'Wallpoet', cursive;
   font-size: 35px;
   color: black;
+}
+
+.results::-webkit-scrollbar {
+  height: 10px;
+}
+
+.results::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 0px;
+}
+
+.results::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.results::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
 #binance-img {
@@ -413,7 +488,7 @@ img {
   cursor: pointer;
 }
 
-/*App.vue*/
+/*switch*/
 .switch-theme {
   position: fixed;
   margin-top: 1%;

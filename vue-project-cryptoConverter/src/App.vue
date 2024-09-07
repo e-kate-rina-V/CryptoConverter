@@ -15,10 +15,14 @@
       <Login v-if="showLogin" @close="showLogin = false" @user-logged-in="handleUserLoggedIn"></Login>
       <section>
         <nav class="rectangle-header">
-          <button id="rectangle-2" @click="toggleHome">Home</button>
-          <button id="rectangle-1" @click="toggleConverter">Converter</button>
+          <router-link to="/home" class="router"><button id="rectangle-2"
+              @click="toggleHome">Home</button></router-link>
+          <router-link to="/converter" class="router"><button id="rectangle-1"
+              @click="toggleConverter">Converter</button></router-link>
         </nav>
-        <Converter v-if="isConverterOpen" :setCrypto="mainStore.setSelectedCrypto" :cryptos="mainStore.topCryptos" />
+        <Converter v-if="isConverterOpen" :setCrypto="mainStore.setSelectedCrypto" :cryptos="mainStore.topCryptos"
+          :favorites="mainStore.favorites" :addFavorite="mainStore.addFavorite"
+          :removeFavorite="mainStore.removeFavorite" :isFavorite="mainStore.isFavorite" />
         <Home v-if="isHomeOpen" />
       </section>
       <section class="switch-theme">

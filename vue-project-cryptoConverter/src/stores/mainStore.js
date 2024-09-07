@@ -9,6 +9,7 @@ export const useMainStore = defineStore('main', {
     amount: 0,
     results: null,
     topCryptos: [],
+    favorites: [] 
   }),
   getters: {
     getAverage(state) {
@@ -17,7 +18,8 @@ export const useMainStore = defineStore('main', {
       if (validPrices.length === 0) return null;
       const average = validPrices.reduce((sum, price) => sum + parseFloat(price), 0) / validPrices.length;
       return average ? average.toFixed(3) : null;
-    }
+    },
+    isFavorite: (state) => (crypto) => state.favorites.includes(crypto)
   },
   actions: {
     toggleTheme() {
@@ -28,8 +30,10 @@ export const useMainStore = defineStore('main', {
       this.user = user;
       if (user) {
         Cookies.set('userEmail', user.email);
+        this.loadFavorites(user.email);
       } else {
         Cookies.remove('userEmail');
+        this.favorites = [];
       }
     },
     setSelectedCrypto(crypto) {
@@ -48,7 +52,31 @@ export const useMainStore = defineStore('main', {
       const email = Cookies.get('userEmail');
       if (email) {
         this.user = { email };
+        this.loadFavorites(email);
       }
+    },
+    addFavorite(crypto) {
+      if (this.user) {
+        if (!this.favorites.includes(crypto)) {
+          this.favorites.push(crypto);
+          this.saveFavorites(this.user.email); 
+        }
+      } else {
+        console.log('User not logged in');
+      }
+    },
+    removeFavorite(crypto) {
+      if (this.user) {
+        this.favorites = this.favorites.filter(fav => fav !== crypto);
+        this.saveFavorites(this.user.email);
+      }
+    },
+    loadFavorites(email) {
+      const favorites = JSON.parse(localStorage.getItem(`favorites_${email}`) || '[]');
+      this.favorites = favorites;
+    },
+    saveFavorites(email) {
+      localStorage.setItem(`favorites_${email}`, JSON.stringify(this.favorites));
     }
   }
 });

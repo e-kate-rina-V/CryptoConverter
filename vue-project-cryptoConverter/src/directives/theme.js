@@ -1,5 +1,5 @@
 export default {
-  bind(el, binding, vnode) {
+  bind(el, binding) {
     const { value } = binding;
     el.classList.add(value);
   },
