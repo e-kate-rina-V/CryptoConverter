@@ -9,7 +9,7 @@ export const useMainStore = defineStore('main', {
     amount: 0,
     results: null,
     topCryptos: [],
-    favorites: [] 
+    favorites: []
   }),
   getters: {
     getAverage(state) {
@@ -59,7 +59,7 @@ export const useMainStore = defineStore('main', {
       if (this.user) {
         if (!this.favorites.includes(crypto)) {
           this.favorites.push(crypto);
-          this.saveFavorites(this.user.email); 
+          this.saveFavorites(this.user.email);
         }
       } else {
         console.log('User not logged in');
