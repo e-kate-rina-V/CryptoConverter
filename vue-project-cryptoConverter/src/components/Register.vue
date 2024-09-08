@@ -15,8 +15,10 @@
         <button type="submit">Register</button>
         <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
         <p>or</p>
-        <button type="button" @click="signInWithGoogle">Sign In with <img id="google-img"
-            src="C:/Users/user/VS Code Projects/CryptoConverter/img/google_logo_2.png" /></button>
+        <button type="button" @click="signInWithGoogle">
+          Sign In with
+          <img id="google-img" src="@/assets/img/google_logo_2.png" />
+        </button>
         <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
       </section>
     </form>
@@ -42,11 +44,14 @@ export default {
       try {
         const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
         const user = userCredential.user;
+
         successMessage.value = 'Registration successful! Welcome, ' + user.email;
         email.value = '';
         password.value = '';
         errorMessage.value = '';
+
         Cookies.set('userEmail', user.email);
+
         emit('user-logged-in', user);
       } catch (error) {
         if (error.code === 'auth/email-already-in-use') {
@@ -66,11 +71,14 @@ export default {
         const provider = new GoogleAuthProvider();
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
+
         successMessage.value = 'Successfully logged in with Google!';
         email.value = '';
         password.value = '';
         errorMessage.value = '';
+
         Cookies.set('userEmail', user.email);
+
         emit('user-logged-in', user);
       } catch (error) {
         errorMessage.value = 'Не удалось войти с помощью Google. Попробуйте снова.';

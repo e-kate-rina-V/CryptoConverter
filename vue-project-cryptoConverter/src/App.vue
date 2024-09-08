@@ -38,7 +38,7 @@
           <Input :changeAmount="mainStore.setAmount" :convert="convert" />
           <div class="results" v-if="mainStore.results">
             <section class="crypto-data">
-              <img id="kraken-img" src="C:/Users/user/VS Code Projects/CryptoConverter/img/kraken_logo.png" />
+              <img id="kraken-img" src="@/assets/img/kraken_logo.png" />
               <div class="crypto-text">
                 <p v-if="mainStore.results.kraken"> Kraken: {{
                   mainStore.results.kraken }} USDT</p>
@@ -46,19 +46,19 @@
               </div>
             </section>
             <section class="crypto-data">
-              <img id="binance-img" src="C:/Users/user/VS Code Projects/CryptoConverter/img/binance_logo.png" />
+              <img id="binance-img" src="@/assets/img/binance_logo.png" />
               <p v-if="mainStore.results.binance"> Binance: {{
                 mainStore.results.binance }} USDT</p>
               <p v-else>Binance: no data available</p>
             </section>
             <section class="crypto-data">
-              <img id="okx-img" src="C:/Users/user/VS Code Projects/CryptoConverter/img/okx_logo.png" />
+              <img id="okx-img" src="@/assets/img/okx_logo.png" />
               <p v-if="mainStore.results.okx">OKX: {{ mainStore.results.okx
                 }} USDT</p>
               <p v-else>OKX: no data available</p>
             </section>
             <section class="crypto-data">
-              <img id="average-img" src="C:/Users/user/VS Code Projects/CryptoConverter/img/average_logo.png" />
+              <img id="average-img" src="@/assets/img/average_logo.png" />
               <p v-if="mainStore.results.kraken || mainStore.results.binance || mainStore.results.okx">
                 Average price: {{ mainStore.getAverage }} USDT
               </p>
@@ -68,7 +68,7 @@
       </slot>
     </main>
     <footer>
-      <div id="footer"><img id="crypto-img" src="C:/Users/user/VS Code Projects/CryptoConverter/img/crypto_logos.png" />
+      <div id="footer"><img id="crypto-img" src="@/assets/img/crypto_logos.png" />
       </div>
     </footer>
   </div>
@@ -127,7 +127,7 @@ export default {
       this.showRegister = false;
     },
     async convert() {
-      if (!this.mainStore.selectedCrypto || this.mainStore.amount <= 0) return;
+      if (!this.mainStore.selectedCrypto || this.mainStore.amount <= 0) { return };
 
       try {
         const symbol = this.mainStore.selectedCrypto;

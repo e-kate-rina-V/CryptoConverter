@@ -15,8 +15,10 @@
         <button type="submit">Log In</button>
         <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
         <p>or</p>
-        <button type="button" @click="signInWithGoogle">Log In with <img id="google-img"
-            src="C:/Users/user/VS Code Projects/CryptoConverter/img/google_logo_2.png" /></button>
+        <button type="button" @click="signInWithGoogle">
+          Log In with
+          <img id="google-img" src="@/assets/img/google_logo_2.png" />
+        </button>
         <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
       </section>
     </form>
@@ -44,12 +46,14 @@ export default {
       try {
         const userCredential = await signInWithEmailAndPassword(auth, this.email, this.password);
         const user = userCredential.user;
+
         this.successMessage = 'Logged in successfully! Welcome back, ' + user.email;
         this.email = '';
         this.password = '';
         this.errorMessage = '';
 
         Cookies.set('userEmail', user.email);
+
         this.$emit('user-logged-in', user);
       } catch (error) {
         if (error.code === 'auth/user-not-found') {
@@ -66,18 +70,21 @@ export default {
         const provider = new GoogleAuthProvider();
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
+
         this.successMessage = 'Successfully logged in with Google!';
         this.email = '';
         this.password = '';
         this.errorMessage = '';
+
         Cookies.set('userEmail', user.email);
+
         this.$emit('user-logged-in', user);
       } catch (error) {
         this.errorMessage = 'Не удалось войти с помощью Google. Попробуйте снова.';
       }
     },
     closeWindow() {
-      this.$emit('close'); 
+      this.$emit('close');
     }
   }
 };

@@ -15,7 +15,7 @@ export const useMainStore = defineStore('main', {
     getAverage(state) {
       const prices = [state.results?.kraken, state.results?.binance, state.results?.okx];
       const validPrices = prices.filter(price => price !== null);
-      if (validPrices.length === 0) return null;
+      if (validPrices.length === 0) { return null };
       const average = validPrices.reduce((sum, price) => sum + parseFloat(price), 0) / validPrices.length;
       return average ? average.toFixed(3) : null;
     },
