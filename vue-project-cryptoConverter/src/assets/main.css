@@ -134,9 +134,8 @@ body {
 }
 
 .favorites-dropdown {
-  position: absolute;
-  margin-left: 65%;
-  bottom: 1%;
+  position: relative;
+  margin-left: 610%;
 }
 
 .favorites-dropdown .dropdown-container {
